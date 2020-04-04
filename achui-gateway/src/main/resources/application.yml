@@ -1,0 +1,36 @@
+server:
+  port: 8301
+spring:
+  application:
+    name: ACHUI-Gateway
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 20
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    initial-instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 3
+    serviceUrl:
+      defaultZone: http://admin:admin@localhost:8001/register/eureka/
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: ACHUI-Auth
+      sensitiveHeaders: "*"
+    system:
+      path: /system/**
+      serviceId: ACHUI-Server-System
+      sensitiveHeaders: "*"
+    test:
+      path: /test/**
+      serviceId: ACHUI-Server-Test
+      sensitiveHeaders: "*"
+  retryable: true
+  ignored-services: "*"
+  ribbon:
+    eager-load:
+      enabled: true
+ribbon:
+  ReadTimeout: 3000

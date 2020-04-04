@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/../achui-auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-register" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-server/achui-server-system" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../achui-server/achui-server-test" charset="UTF-8" />
+  </component>
+</project>
