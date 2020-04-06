@@ -52,7 +52,12 @@ public class AchuiAuthorizationServerConfigure extends AuthorizationServerConfig
                 if (StringUtils.isBlank(client.getSecret())) {
                     throw new Exception("secret can't be empty");
                 }
-                String[] grantTypes = StringUtils.splitByWholeSeparatorPreserveAllTokens()
+                String[] grantTypes = StringUtils.splitByWholeSeparatorPreserveAllTokens(client.getGrantType(), ",");
+                builder.withClient(client.getClient())
+                        .secret(passwordEncoder.encode(client.getSecret()))
+                        .authorizedGrantTypes(grantTypes)
+                        .scopes(client.getScope());
+
             }
         }
         clients.inMemory()
@@ -81,8 +86,8 @@ public class AchuiAuthorizationServerConfigure extends AuthorizationServerConfig
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setAccessTokenValiditySeconds(60 * 60 * 24);
-        defaultTokenServices.setRefreshTokenValiditySeconds(60 * 60 * 24 * 7);
+        defaultTokenServices.setAccessTokenValiditySeconds(authProperties.getAccessTokenValiditySeconds());
+        defaultTokenServices.setRefreshTokenValiditySeconds(authProperties.getRefreshTokenValiditySeconds());
         return defaultTokenServices;
     }
 
