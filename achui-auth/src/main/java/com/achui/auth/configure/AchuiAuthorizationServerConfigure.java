@@ -3,6 +3,7 @@ package com.achui.auth.configure;
 import com.achui.auth.properties.AchuiAuthProperties;
 import com.achui.auth.properties.AchuiClientsProperties;
 import com.achui.auth.service.AchuiUserDetailService;
+import com.achui.auth.translator.AchuiWebResponseExceptionTranslator;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class AchuiAuthorizationServerConfigure extends AuthorizationServerConfig
     private PasswordEncoder passwordEncoder;
     @Autowired
     private AchuiAuthProperties authProperties;
+    @Autowired
+    private AchuiWebResponseExceptionTranslator exceptionTranslator;
+
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -72,7 +76,8 @@ public class AchuiAuthorizationServerConfigure extends AuthorizationServerConfig
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailService)
                 .authenticationManager(authenticationManager)
-                .tokenServices(defaultTokenServices());
+                .tokenServices(defaultTokenServices())
+                .exceptionTranslator(exceptionTranslator);
     }
 
     @Bean
