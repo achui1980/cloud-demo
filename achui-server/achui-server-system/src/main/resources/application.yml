@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: ACHUI-Server-System
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 eureka:
   instance:

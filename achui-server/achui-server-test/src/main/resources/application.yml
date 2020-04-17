@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: ACHUI-Server-Test
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
 eureka:
   instance:
@@ -20,3 +23,6 @@ security:
     resource:
       id: ${spring.application.name}
       user-info-uri: http://localhost:8301/auth/user
+feign:
+  hystrix:
+    shareSecurityContext: true

@@ -1,5 +1,7 @@
 package com.achui.server.test.controller;
 
+import com.achui.server.test.service.IHelloService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,9 @@ import java.security.Principal;
  */
 @RestController
 public class TestController {
+    @Autowired
+    private IHelloService helloService;
+
     @GetMapping("test1")
     @PreAuthorize("hasAnyAuthority('user:add')")
     public String test1() {
@@ -27,5 +32,10 @@ public class TestController {
     @GetMapping("user")
     public Principal currentUser(Principal principal) {
         return principal;
+    }
+
+    @GetMapping("/hello")
+    public String hello(String name) {
+        return this.helloService.hello(name);
     }
 }
