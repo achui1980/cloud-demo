@@ -1,9 +1,12 @@
 package com.achui.auth.service;
 
+import com.achui.auth.manager.UserManager;
 import com.achui.common.entity.AchuiAuthUser;
+import com.achui.common.entity.system.SystemUser;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,15 +22,25 @@ public class AchuiUserDetailService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserManager userManager;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AchuiAuthUser user = new AchuiAuthUser();
-        user.setUsername(username);
-        user.setPassword(this.passwordEncoder.encode("123456"));
-        return new User(username, user.getPassword(), user.isEnabled(),
-                user.isAccountNonExpired(), user.isCredentialsNonExpired(),
-                user.isAccountNonLocked(), AuthorityUtils.commaSeparatedStringToAuthorityList("user:add"));
+        SystemUser systemUser = userManager.findByName(username);
+        if (systemUser != null) {
+            String permissions = userManager.findUserPermissions(systemUser.getUsername());
+            boolean notLocked = false;
+            if (StringUtils.equals(SystemUser.STATUS_VALID, systemUser.getStatus())) {
+                notLocked = true;
+            }
+            AchuiAuthUser authUser = new AchuiAuthUser(systemUser.getUsername(), systemUser.getPassword(), true, true, true, notLocked,
+                    AuthorityUtils.commaSeparatedStringToAuthorityList(permissions));
+            BeanUtils.copyProperties(systemUser, authUser);
+            return authUser;
+        } else {
+            throw new UsernameNotFoundException("");
+        }
 
     }
 }
