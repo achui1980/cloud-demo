@@ -33,6 +33,15 @@ public class AchuiSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //开启图像验证码功能
+        /*http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
+                .antMatchers("/oauth/**")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**").authenticated()
+                .and()
+                .csrf().disable();*/
         http.requestMatchers()
                 .antMatchers("/oauth/**")
                 .and()

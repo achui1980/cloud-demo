@@ -64,11 +64,6 @@ public class AchuiAuthorizationServerConfigure extends AuthorizationServerConfig
 
             }
         }
-        clients.inMemory()
-                .withClient("achui")
-                .secret(passwordEncoder.encode("123456"))
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("all");
     }
 
     @Override

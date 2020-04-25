@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: ACHUI-Gateway
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 eureka:
   instance:
     lease-expiration-duration-in-seconds: 20
