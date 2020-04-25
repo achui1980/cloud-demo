@@ -2,6 +2,8 @@ package com.achui.server.system.configure;
 
 import com.achui.common.handler.AchuiAccessDeniedHandler;
 import com.achui.common.handler.AchuiAuthExceptionEntryPoint;
+import com.achui.server.system.properties.AchuiServerSystemProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,13 +22,17 @@ public class AchuiServerSystemResourceServerConfigure extends ResourceServerConf
     private AchuiAccessDeniedHandler accessDeniedHandler;
     @Autowired
     private AchuiAuthExceptionEntryPoint exceptionEntryPoint;
+    @Autowired
+    private AchuiServerSystemProperties properties;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers(anonUrls).permitAll()
                 .antMatchers("/**")
                 .authenticated();
     }
