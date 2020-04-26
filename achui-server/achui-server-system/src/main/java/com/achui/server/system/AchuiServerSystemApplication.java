@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableAchuiAuthExceptionHandler
 @EnableAchuiServerProtect

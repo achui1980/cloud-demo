@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: ACHUI-Server-System
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8001
+      discovery:
+        server-addr: localhost:8001

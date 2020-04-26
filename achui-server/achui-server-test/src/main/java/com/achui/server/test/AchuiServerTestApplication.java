@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableFeignClients
 @AchuiCloudApplication

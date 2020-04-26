@@ -1,8 +1,6 @@
 server:
   port: 8301
 spring:
-  application:
-    name: ACHUI-Gateway
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
@@ -29,16 +27,6 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-eureka:
-  instance:
-    lease-expiration-duration-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    initial-instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://admin:admin@localhost:8001/register/eureka/
 zuul:
   SendErrorFilter:
     error:
