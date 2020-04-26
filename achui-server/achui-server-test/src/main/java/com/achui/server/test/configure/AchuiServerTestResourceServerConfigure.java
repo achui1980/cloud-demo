@@ -27,6 +27,7 @@ public class AchuiServerTestResourceServerConfigure extends ResourceServerConfig
                 .requestMatchers().antMatchers("/**")
                 .and()
                 .authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**")
                 .authenticated();
     }

@@ -7,7 +7,38 @@ spring:
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  redis:
+    database: 0
+    host: 192.168.99.100
+    port: 6379
+    lettuce:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 5000
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: achui
+        password: 123456
 
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 20

@@ -4,7 +4,31 @@ spring:
   application:
     name: ACHUI-Gateway
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: achui
+        password: 123456
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
 eureka:
   instance:
     lease-expiration-duration-in-seconds: 20

@@ -30,6 +30,28 @@ spring:
         max-active: 2000
         max-wait: 10000
     timeout: 5000
+  boot:
+    admin:
+      client:
+        url: http://localhost:8401
+        username: achui
+        password: 123456
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "@project.description@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 mybatis-plus:
   type-aliases-package: com.achui.common.entity.system
   mapper-locations: classpath:mapper/*.xml

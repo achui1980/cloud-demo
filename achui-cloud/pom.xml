@@ -14,6 +14,7 @@
         <module>../achui-auth</module>
         <module>../achui-gateway</module>
         <module>../achui-server</module>
+        <module>../achui-monitor</module>
     </modules>
     <name>ACHUI-Cloud</name>
     <description>ACHUI-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>

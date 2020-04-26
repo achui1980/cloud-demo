@@ -1,0 +1,14 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: ACHUI-Monitor-Admin
+  boot:
+    admin:
+      ui:
+        title: ${spring.application.name}
+  security:
+    user:
+      name: achui
+      password: 123456
