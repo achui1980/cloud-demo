@@ -27,7 +27,7 @@ public class AchuiServerProtectInterceptor implements HandlerInterceptor {
             return true;
         } else {
             AchuiResponse febsResponse = new AchuiResponse();
-            response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.getWriter().write(JSONObject.toJSONString(febsResponse.message("请通过网关获取资源")));
             return false;

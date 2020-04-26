@@ -17,7 +17,7 @@ public class AchuiAuthExceptionEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         AchuiResponse achuiResponse = new AchuiResponse();
         AchuiUtil.makeResponse(
-                httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE,
+                httpServletResponse, MediaType.APPLICATION_JSON_VALUE,
                 HttpServletResponse.SC_UNAUTHORIZED, achuiResponse.message("token无效")
         );
     }

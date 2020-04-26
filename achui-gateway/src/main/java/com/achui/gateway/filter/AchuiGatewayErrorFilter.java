@@ -36,7 +36,7 @@ public class AchuiGatewayErrorFilter extends SendErrorFilter {
 
             HttpServletResponse response = ctx.getResponse();
             AchuiUtil.makeResponse(
-                    response, MediaType.APPLICATION_JSON_UTF8_VALUE,
+                    response, MediaType.APPLICATION_JSON_VALUE,
                     HttpServletResponse.SC_INTERNAL_SERVER_ERROR, febsResponse
             );
             log.error("Zull sendError：{}", febsResponse.getMessage());

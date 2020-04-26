@@ -75,7 +75,7 @@ public class AchuiGatewayRequestFilter extends ZuulFilter {
             try {
 
                 AchuiUtil.makeResponse(
-                        response, MediaType.APPLICATION_JSON_UTF8_VALUE,
+                        response, MediaType.APPLICATION_JSON_VALUE,
                         HttpServletResponse.SC_FORBIDDEN, febsResponse
                 );
                 ctx.setSendZuulResponse(false);

@@ -46,7 +46,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
             } catch (ValidateCodeException e) {
                 AchuiResponse febsResponse = new AchuiResponse();
-                AchuiUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE,
+                AchuiUtil.makeResponse(httpServletResponse, MediaType.APPLICATION_JSON_VALUE,
                         HttpServletResponse.SC_INTERNAL_SERVER_ERROR, febsResponse.message(e.getMessage()));
                 log.error(e.getMessage(), e);
             }

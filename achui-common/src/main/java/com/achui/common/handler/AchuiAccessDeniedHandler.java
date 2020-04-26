@@ -17,7 +17,7 @@ public class AchuiAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
         AchuiResponse achuiResponse = new AchuiResponse();
         AchuiUtil.makeResponse(
-                httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE,
+                httpServletResponse, MediaType.APPLICATION_JSON_VALUE,
                 HttpServletResponse.SC_FORBIDDEN, achuiResponse.message("没有权限访问该资源"));
     }
 }

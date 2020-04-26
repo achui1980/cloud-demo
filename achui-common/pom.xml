@@ -13,7 +13,6 @@
     <artifactId>achui-common</artifactId>
     <name>ACHUI-Common</name>
     <description>ACHUI-Common通用模块</description>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -22,7 +21,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.51</version>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -68,12 +67,12 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>2.2.0</version>
+            <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
