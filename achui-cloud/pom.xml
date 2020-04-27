@@ -40,6 +40,7 @@
         <p6spy.version>3.8.1</p6spy.version>
         <sentinel-zuul-adapter.version>1.6.3</sentinel-zuul-adapter.version>
         <spring-boot-admin-starter.version>2.2.0</spring-boot-admin-starter.version>
+        <logstash-logback-encoder.version>6.1</logstash-logback-encoder.version>
     </properties>
 
     <dependencyManagement>
@@ -97,6 +98,11 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-server-ui</artifactId>
                 <version>${spring-boot-admin-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
