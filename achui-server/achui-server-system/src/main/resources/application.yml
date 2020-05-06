@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: ACHUI-Server-System
+  http:
+    encoding:
+      force: true
   datasource:
     dynamic:
       p6spy: true

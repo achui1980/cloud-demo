@@ -16,6 +16,7 @@ public class TestController {
 
     @GetMapping("info")
     public String test(){
+
         return "achui-server-system";
     }
 

@@ -7,13 +7,13 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author portz
- * @date 2020/4/26 14:48
+ * @date 2020/4/30 20:40
  */
 @Data
 @SpringBootConfiguration
 @PropertySource(value = {"classpath:achui-gateway.properties"})
 @ConfigurationProperties(prefix = "achui.gateway")
-public class AchuiGatewayProperties  {
+public class AchuiGatewayProperties {
     /**
      * 禁止外部访问的 URI，多个值的话以逗号分隔
      */

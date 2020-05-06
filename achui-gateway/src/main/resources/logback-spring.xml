@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <contextName>achui</contextName>
-    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
-    <property name="log.path" value="log/achui-server-system" />
+    <property name="log.path" value="log/achui-gateway" />
     <property name="log.maxHistory" value="15" />
-    <property name="log.colorPattern" value="%magenta(%d{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) %boldCyan([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]) %yellow(%thread) %green(%logger) %msg%n"/>
-    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5level [${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] %thread %logger %msg%n"/>
-
+    <property name="log.colorPattern" value="%magenta(%d{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) %yellow(%thread) %green(%logger) %msg%n"/>
+    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5level %thread %logger %msg%n"/>
     <!--输出到控制台-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${log.colorPattern}</pattern>
         </encoder>
     </appender>
-
-    <!--输出到 logstash的 appender-->
-    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
-        <!--<destination>192.168.99.100:5044</destination>-->
-        <!--<encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>-->
-    <!--</appender>-->
 
     <!--输出到文件-->
     <appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -50,13 +41,19 @@
         </filter>
     </appender>
 
+    <!--输出到 logstash的 appender-->
+<!--    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+<!--        <destination>${logstash.url}:4560</destination>-->
+<!--        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>-->
+<!--    </appender>-->
+
     <root level="debug">
         <appender-ref ref="console" />
-        <!--<appender-ref ref="logstash" />-->
     </root>
 
     <root level="info">
         <appender-ref ref="file_info" />
         <appender-ref ref="file_error" />
+<!--        <appender-ref ref="logstash" />-->
     </root>
 </configuration>

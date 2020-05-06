@@ -1,10 +1,38 @@
 server:
   port: 8301
 spring:
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+  cloud:
+    gateway:
+      routes:
+        - id: ACHUI-Auth
+          uri: lb://ACHUI-Auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: Hystrix
+              args:
+                name: authfallback
+                fallbackUri: forward:/fallback/ACHUI-Auth
+        - id: ACHUI-Server-System
+          uri: lb://ACHUI-Server-System
+          predicates:
+            - Path=/system/**
+          filters:
+            - name: Hystrix
+              args:
+                name: systemfallback
+                fallbackUri: forward:/fallback/ACHUI-Server-System
+        - id: ACHUI-Server-test
+          uri: lb://ACHUI-Server-Test
+          predicates:
+            - Path=/test/**
+          filters:
+            - name: Hystrix
+              args:
+                name: testfallback
+                fallbackUri: forward:/fallback/ACHUI-Server-Test
+      default-filters:
+        - StripPrefix=1
 
   boot:
     admin:
@@ -27,27 +55,3 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-zuul:
-  SendErrorFilter:
-    error:
-      disable: true
-  routes:
-    auth:
-      path: /auth/**
-      serviceId: ACHUI-Auth
-      sensitiveHeaders: "*"
-    system:
-      path: /system/**
-      serviceId: ACHUI-Server-System
-      sensitiveHeaders: "*"
-    test:
-      path: /test/**
-      serviceId: ACHUI-Server-Test
-      sensitiveHeaders: "*"
-  retryable: true
-  ignored-services: "*"
-  ribbon:
-    eager-load:
-      enabled: true
-ribbon:
-  ReadTimeout: 3000
