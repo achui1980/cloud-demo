@@ -55,3 +55,11 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
