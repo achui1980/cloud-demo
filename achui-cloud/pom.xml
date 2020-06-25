@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../achui-common</module>
-        <module>../achui-register</module>
         <module>../achui-auth</module>
         <module>../achui-gateway</module>
         <module>../achui-server</module>
