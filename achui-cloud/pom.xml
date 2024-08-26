@@ -35,7 +35,7 @@
         <spring-boot-admin-starter-client.version>2.2.0</spring-boot-admin-starter-client.version>
         <dynamic-datasource-spring-boot-starter.version>2.5.7</dynamic-datasource-spring-boot-starter.version>
         <easy-captcha.version>1.6.2</easy-captcha.version>
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <springfox-swagger2.version>2.10.0</springfox-swagger2.version>
         <p6spy.version>3.8.1</p6spy.version>
         <sentinel-zuul-adapter.version>1.6.3</sentinel-zuul-adapter.version>
         <spring-boot-admin-starter.version>2.2.0</spring-boot-admin-starter.version>
